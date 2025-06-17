@@ -1,0 +1,31 @@
+# 编译产物
+*.o
+*.so
+*.a
+sample_mp4
+sample_MP4
+
+# 调试文件
+*.gdb
+core.*
+
+# 临时文件
+*~
+*.tmp
+*.swp
+
+# 日志文件
+*.log
+
+# 媒体文件
+*.mp4
+*.h264
+
+# IDE文件
+.vscode/
+.idea/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+/build/

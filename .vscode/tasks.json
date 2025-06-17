@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "mkdir -p build && cd build && make -j4",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "sync-to-remote",
+      "type": "shell",
+      "command": "ssh root@192.168.13.119 'mkdir -p /root/mpp_app/sample_mp4/' && scp build/sample_mp4 root@192.168.13.119:/root/mpp_app/sample_mp4/",//此处改为自己ip
+      "problemMatcher": []
+    },
+    {
+      "label": "start-gdbserver",
+      "type": "shell",
+      "command": "ssh root@192.168.13.119 \"source /etc/profile && cd /root/mpp_app/sample_mp4/ && gdbserver 192.168.13.119:2000 ./sample_mp4 \"",//此处同样改为自己ip
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "."
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*Listening on port.*",
+          "endsPattern": "^Listening on port \\d+$"
+        }
+      }
+    },
+    {
+      "label": "build-and-sync-remote",
+      "dependsOn": [
+        "build",
+        "sync-to-remote",
+        "start-gdbserver"
+      ],
+      "dependsOrder": "sequence"
+    },
+  ]
+}

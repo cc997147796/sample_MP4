@@ -22,7 +22,7 @@ core.*
 *.h264
 
 # IDE文件
-.vscode/
+
 .idea/
 
 # 系统文件

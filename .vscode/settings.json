@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "ot_common_aio.h": "c",
+        "ot_common_aenc.h": "c",
+        "stdio.h": "c",
+        "sample_mp4_muxer.h": "c",
+        "ot_common_video.h": "c",
+        "errno.h": "c",
+        "signal.h": "c",
+        "time.h": "c"
+    }
+}
